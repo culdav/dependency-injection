@@ -1,3 +1,4 @@
+import { APP_CONFIG } from './config';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 

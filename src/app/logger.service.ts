@@ -1,14 +1,12 @@
-import { ExperimentalLoggerService } from './experimental-logger.service';
-import { Injectable } from '@angular/core';
+import { APP_CONFIG, AppConfig } from './config';
+import { Inject, Injectable } from '@angular/core';
 import { Logger } from 'src/app/logger';
 
 @Injectable({
   providedIn: 'root',
-  // useExisting: ExperimentalLoggerService
 })
 export class LoggerService implements Logger {
   prefix = 'root';
-  constructor() {}
 
   log(message: string) {
     console.log(`${this.prefix}: ${message}`);
