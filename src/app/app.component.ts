@@ -1,17 +1,19 @@
 import { LoggerService } from './logger.service';
-import { Component, Optional } from '@angular/core';
+import { Component, Optional, Self } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  providers: [LoggerService],
 })
 export class AppComponent {
   title = 'dependency-injection';
 
-  constructor(@Optional() private logger: LoggerService) {
+  constructor(@Self() private logger: LoggerService) {
     if (this.logger) {
-      this.logger.log('App constructor init');
+      this.logger.prefix = 'App component';
+      this.logger.log('constructor init');
     }
   }
 }

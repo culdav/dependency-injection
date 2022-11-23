@@ -1,16 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Self } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { LoggerService } from 'src/app/logger.service';
 
 import { AppComponent } from './app.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+  constructor(@Self() private logger: LoggerService) {
+    if (this.logger) {
+      this.logger.log('constructor init');
+    }
+  }
+}

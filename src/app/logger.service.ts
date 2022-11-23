@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class LoggerService {
+  prefix = 'root';
   constructor() {}
 
   log(message: string) {
-    console.log(message);
+    console.log(`${this.prefix}: ${message}`);
   }
 }
