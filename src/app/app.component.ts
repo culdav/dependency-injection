@@ -1,5 +1,5 @@
 import { LoggerService } from './logger.service';
-import { Component, Optional, Self } from '@angular/core';
+import { Component, Optional, Self, SkipSelf } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -10,10 +10,17 @@ import { Component, Optional, Self } from '@angular/core';
 export class AppComponent {
   title = 'dependency-injection';
 
-  constructor(@Self() private logger: LoggerService) {
+  constructor(
+    @Self() private logger: LoggerService,
+    @SkipSelf() private parentLogger: LoggerService
+  ) {
     if (this.logger) {
       this.logger.prefix = 'App component';
       this.logger.log('constructor init');
+    }
+
+    if (this.parentLogger) {
+      this.parentLogger.log('constructor init');
     }
   }
 }

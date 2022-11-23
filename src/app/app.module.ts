@@ -10,10 +10,4 @@ import { AppComponent } from './app.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-  constructor(@Self() private logger: LoggerService) {
-    if (this.logger) {
-      this.logger.log('constructor init');
-    }
-  }
-}
+export class AppModule {}
