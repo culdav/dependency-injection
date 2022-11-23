@@ -4,7 +4,7 @@ import { Logger } from 'src/app/logger';
 
 @Injectable({
   providedIn: 'root',
-  // useClass: ExperimentalLoggerService
+  // useExisting: ExperimentalLoggerService
 })
 export class LoggerService implements Logger {
   prefix = 'root';

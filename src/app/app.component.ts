@@ -6,21 +6,25 @@ import { LoggerService } from './logger.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [{ provide: LoggerService, useClass: ExperimentalLoggerService }],
+  providers: [
+    { provide: LoggerService, useExisting: ExperimentalLoggerService },
+  ],
 })
 export class AppComponent implements OnInit {
   title = 'dependency-injection';
 
-  constructor(private logger: LoggerService) {}
-
-  // in this case there will be different instances
-  // constructor(
-  //   private logger: LoggerService,
-  //   private experimentalLogger: ExperimentalLoggerService
-  // ) {}
+  constructor(
+    private logger: LoggerService,
+    private experimentalLogger: ExperimentalLoggerService
+  ) {}
 
   ngOnInit(): void {
     this.logger.prefix = 'App Component';
     this.logger.log('App component init...');
+
+    console.log(
+      'Is the same instance: ',
+      this.logger === this.experimentalLogger
+    );
   }
 }
