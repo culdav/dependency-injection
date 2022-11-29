@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { AppConfig, APP_CONFIG } from 'src/app/config';
 import { Logger } from 'src/app/logger';
@@ -11,7 +12,7 @@ export class ExperimentalLoggerService implements Logger {
   // constructor(@Inject(APP_CONFIG) private config: AppConfig) {
   //   console.log('ExperimentalLoggerService -> constructor -> config', config);
   // }
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   log(message: string): void {
     console.log(`${this.prefix} (experimental): ${message}`);
