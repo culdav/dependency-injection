@@ -1,5 +1,5 @@
-import { LoggerService } from './logger.service';
-import { Component, Optional } from '@angular/core';
+import { WINDOW } from './window.token';
+import { Component, Inject, Optional } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,7 @@ import { Component, Optional } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'dependency-injection';
-
-  constructor(@Optional() private logger: LoggerService) {
-    if (this.logger) {
-      this.logger.log('App constructor init');
-    }
+  constructor(@Inject(WINDOW) private window: Window) {
+    console.log('Window: ', window);
   }
 }
