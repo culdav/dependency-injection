@@ -1,7 +1,8 @@
+import { REPORTERS } from './reporter.token';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { AppConfig, APP_CONFIG } from 'src/app/config';
 import { Logger } from 'src/app/logger';
+import { Reporter } from 'src/app/reporter';
 
 @Injectable({
   providedIn: 'root',
@@ -9,12 +10,10 @@ import { Logger } from 'src/app/logger';
 export class ExperimentalLoggerService implements Logger {
   prefix = 'root';
 
-  // constructor(@Inject(APP_CONFIG) private config: AppConfig) {
-  //   console.log('ExperimentalLoggerService -> constructor -> config', config);
-  // }
-  constructor(private http: HttpClient) {}
+  constructor(@Inject(REPORTERS) private reporters: ReadonlyArray<Reporter>) {}
 
   log(message: string): void {
     console.log(`${this.prefix} (experimental): ${message}`);
+    this.reporters.forEach((r) => r.report());
   }
 }
