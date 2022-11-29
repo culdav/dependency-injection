@@ -3,7 +3,11 @@ import { Component, Optional } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <main>
+      <app-gallery></app-gallery>
+    </main>
+  `,
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
