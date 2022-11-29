@@ -17,7 +17,7 @@ import { HttpClient } from '@angular/common/http';
           ? new ExperimentalLoggerService(http)
           : new LoggerService();
       },
-      deps: [APP_CONFIG],
+      deps: [APP_CONFIG, HttpClient],
     },
   ],
 })
