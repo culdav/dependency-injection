@@ -4,12 +4,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryCardComponent } from './gallery-card/gallery-card.component';
+import { GallerySlideComponent } from './gallery-slide/gallery-slide.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GalleryComponent,
-    GalleryCardComponent
+    GalleryCardComponent,
+    GallerySlideComponent
   ],
   imports: [
     BrowserModule

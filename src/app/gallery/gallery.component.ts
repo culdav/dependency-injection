@@ -7,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
     <div class="gallery-wrap">
       <h1 class="gallery-wrap_title">Gallery title</h1>
       <div class="gallery-content">
-        <app-gallery-card></app-gallery-card>
-        <app-gallery-card></app-gallery-card>
+        <ng-content></ng-content>
       </div>
     </div>
   `,
   styleUrls: ['./gallery.component.scss'],
-  providers: [GalleryLoggerService],
+  viewProviders: [GalleryLoggerService], //available only for components
 })
 export class GalleryComponent implements OnInit {
   constructor(private logger: GalleryLoggerService) {}

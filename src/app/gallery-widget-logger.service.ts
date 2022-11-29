@@ -4,8 +4,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class GalleryLoggerService implements Logger {
-  private _prefix = 'Gallery logger service';
+export class GalleryWidgetLoggerService implements Logger {
+  private _prefix = 'Gallery widget service';
+
+  constructor() {}
 
   log(msg: string): void {
     console.log(`${this._prefix}: ${msg}`);
