@@ -1,9 +1,15 @@
-import { AppConfig, APP_CONFIG } from './config';
+import { Component, Injector, OnInit } from '@angular/core';
+import { APP_CONFIG } from './config';
 import { ExperimentalLoggerService } from './experimental-logger.service';
-import { Component, OnInit } from '@angular/core';
 import { LoggerService } from './logger.service';
-import { LegacyLogger } from 'src/app/logger.legacy';
-import { HttpClient } from '@angular/common/http';
+
+export function loggerFactory(
+  injector: Injector
+): ExperimentalLoggerService | LoggerService {
+  return injector.get(APP_CONFIG).experimentalEnabled
+    ? injector.get(ExperimentalLoggerService)
+    : injector.get(LoggerService);
+}
 
 @Component({
   selector: 'app-root',
@@ -12,22 +18,15 @@ import { HttpClient } from '@angular/common/http';
   providers: [
     {
       provide: LoggerService,
-      useFactory: (appConfig: AppConfig, http: HttpClient) => {
-        return appConfig.experimentalEnabled
-          ? new ExperimentalLoggerService(http)
-          : new LoggerService();
-      },
-      deps: [APP_CONFIG],
+      useFactory: loggerFactory,
+      deps: [Injector],
     },
   ],
 })
 export class AppComponent implements OnInit {
   title = 'dependency-injection';
 
-  constructor(
-    private logger: LoggerService,
-    private experimentalLogger: ExperimentalLoggerService
-  ) {}
+  constructor(private logger: LoggerService) {}
 
   ngOnInit(): void {
     this.logger.prefix = 'App Component';
