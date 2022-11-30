@@ -17,12 +17,8 @@ export class ReadOnlyWidgetComponent extends WidgetBase implements OnInit {
   data$!: Observable<any>;
   config: any;
 
-  constructor(
-    private actions: WidgetActionService,
-    dataProvider: WidgetDataService,
-    settings: WidgetSettingsService
-  ) {
-    super(dataProvider, settings);
+  constructor(private actions: WidgetActionService) {
+    super();
   }
 
   ngOnInit(): void {

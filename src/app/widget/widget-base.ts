@@ -1,6 +1,6 @@
 import { WidgetSettingsService } from './services/widget-settings.service';
 import { WidgetDataService } from './services/widget-data.service';
-import { Directive, Input } from '@angular/core';
+import { Directive, Input, inject } from '@angular/core';
 
 @Directive()
 export abstract class WidgetBase {
@@ -10,8 +10,6 @@ export abstract class WidgetBase {
   @Input()
   title = '';
 
-  constructor(
-    protected dataProvider: WidgetDataService,
-    protected settings: WidgetSettingsService
-  ) {}
+  protected dataProvider = inject(WidgetDataService);
+  protected settings = inject(WidgetSettingsService);
 }
