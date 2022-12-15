@@ -1,3 +1,5 @@
+import { EngagingReporterService } from './engaging-reporter.service';
+import { REPORTERS } from './reporter.token';
 import { LegacyLogger } from './logger.legacy';
 import { Component, Injector, OnInit } from '@angular/core';
 import { APP_CONFIG } from './config';
@@ -28,6 +30,11 @@ export function loggerFactory(
       useValue: LegacyLogger,
       // multi: true
     },
+    // {
+    //   provide: LoggerService,
+    //   useClass: ExperimentalLoggerService
+    // },
+    // {provide: REPORTERS, useExisting: EngagingReporterService, multi: true}
   ],
 })
 export class AppComponent implements OnInit {

@@ -14,6 +14,6 @@ export class ExperimentalLoggerService implements Logger {
 
   log(message: string): void {
     console.log(`${this.prefix} (experimental): ${message}`);
-    this.reporters.forEach((r) => r.report());
+    // this.reporters.forEach((r) => r.report());
   }
 }
