@@ -7,9 +7,9 @@ import { WINDOW } from './window.token';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  a14Window = inject(WINDOW);
+  aWindow = inject(WINDOW); //infers the type from the injection token
   constructor(@Inject(WINDOW) private window: Window) {
     console.log('Window: ', window);
-    console.log('Window: ', this.a14Window);
+    console.log('Window: ', this.aWindow);
   }
 }
