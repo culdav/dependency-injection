@@ -22,7 +22,10 @@ export function loggerFactory(
       useFactory: loggerFactory,
       deps: [Injector],
     },
-    //add use value provider with multi true to see the difference
+    {
+      provide: LoggerService,
+      useValue: LegacyLogger,
+    },
   ],
 })
 export class AppComponent implements OnInit {
@@ -31,8 +34,7 @@ export class AppComponent implements OnInit {
   constructor(private logger: LoggerService) {}
 
   ngOnInit(): void {
-    // uncomment for useValue example
-    // console.log('Logger: ', this.logger);
+    console.log('Logger: ', this.logger);
     this.logger.prefix = 'App Component';
     this.logger.log('App component init...');
   }
