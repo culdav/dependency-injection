@@ -5,7 +5,7 @@ import { Directive, Host } from '@angular/core';
   selector: '[appChild]',
 })
 export class ChildDirective {
-  constructor(@Host() private logger: LoggerService) {
+  constructor(private logger: LoggerService) {
     this.logger.log('directive constructor');
   }
 }
