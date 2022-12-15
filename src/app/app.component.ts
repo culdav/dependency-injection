@@ -9,7 +9,6 @@ import { LoggerService } from './logger.service';
   providers: [{ provide: LoggerService, useClass: ExperimentalLoggerService }],
 })
 export class AppComponent implements OnInit {
-  title = 'dependency-injection';
 
   constructor(private logger: LoggerService) {}
 
