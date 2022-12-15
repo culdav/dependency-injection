@@ -3,7 +3,7 @@ import { Directive, Optional, Self } from '@angular/core';
 
 @Directive({
   selector: '[appParent]',
-  providers: [LoggerService],
+  providers: [],
 })
 export class ParentDirective {
   constructor(@Optional() @Self() private logger: LoggerService) {
