@@ -21,10 +21,12 @@ export function loggerFactory(
       provide: LoggerService,
       useFactory: loggerFactory,
       deps: [Injector],
+      // multi: true
     },
     {
       provide: LoggerService,
       useValue: LegacyLogger,
+      // multi: true
     },
   ],
 })
