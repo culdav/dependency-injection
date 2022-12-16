@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule],
-  providers: [],
+  providers: [{ provide: APP_CONFIG, useValue: { experimentalEnabled: true } }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
