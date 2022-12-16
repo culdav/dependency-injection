@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable, PLATFORM_ID } from '@angular/core';
 
 /**
  * Fake store
@@ -6,6 +6,10 @@ import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
+  // useFactory: () => {
+  //   const platform = inject(PLATFORM_ID);
+  //   return platform === 'browser' ? window : ({} as Window);
+  // },
 })
 export class Store<T> {
   constructor() {}
